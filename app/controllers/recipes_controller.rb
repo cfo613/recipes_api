@@ -40,9 +40,10 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find_by(id: params[:id])
-    if @recipe.destroy
-      # error_msg = {msg: "receipe removed from API"}
-      render json: {}
+    if @recipe
+      @recipe.destroy
+      msg = {msg: "receipe removed from API"}
+      render json: { body: msg }
     else
       render json: "there was an error removing your recipe"
     end

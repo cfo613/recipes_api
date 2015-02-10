@@ -59,9 +59,9 @@ end
 
 if response == "d"
   puts HTTParty.get('http://localhost:3000/recipes.json')
-  puts "enter the id of the recipe you would like to update"
+  puts "enter the id of the recipe you would like to destroy"
   id = gets.chomp
-  binding.pry
-  
-  puts HTTParty.delete("http://localhost:3000/recipes/#{id}.json")
+
+  confirm = HTTParty.delete("http://localhost:3000/recipes/#{id}.json")
+  puts confirm["body"]
 end
